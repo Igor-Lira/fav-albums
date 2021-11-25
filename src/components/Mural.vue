@@ -1,7 +1,7 @@
 <template>
-  <div v-for="topAlbum in topAlbumInfo.value" :key="topAlbum.name"> 
+  <span v-for="topAlbum in topAlbumInfo.value" :key="topAlbum.name" class="mural"> 
     <Album :info="topAlbum"/>
-  </div>
+  </span>
 </template>
 
 <script>
@@ -19,7 +19,7 @@ export default {
   },
   setup(props){
     const topAlbumInfo = reactive({value: []});
-    watchEffect(() => {topAlbumInfo.value = props.topAlbumData.value; console.log ('no mural', topAlbumInfo.value )});
+    watchEffect(() => topAlbumInfo.value = props.topAlbumData.value );
     return {
       topAlbumInfo
     }
@@ -28,5 +28,7 @@ export default {
 </script>
 
 <style>
-
+.mural{
+  max-width: 400px;
+}
 </style>

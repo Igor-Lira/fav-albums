@@ -1,9 +1,5 @@
 <template>
-  <div>
-      <p>{{name}}</p>
-      <p>Total Count: {{count}}</p>
       <img :src="img" alt="">
-  </div>
 </template>
 
 <script>

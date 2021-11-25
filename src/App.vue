@@ -1,8 +1,12 @@
 <template>
   <div>
-    <label for="username">Your Username</label>
-    <input id="username" v-model="userName" @keydown.enter="searchInApi" type="text" />
-    <Mural :topAlbumData="topAlbumData"/>
+    <div class="searchBar">
+      <label for="username">Your Username</label> 
+      <input id="username" v-model="userName" @keydown.enter="searchInApi" type="text" />
+    </div>
+    <div class="muralBox">
+        <Mural :topAlbumData="topAlbumData"/>
+    </div>
   </div>
 </template>
 
@@ -31,3 +35,12 @@ export default {
   }
 }
 </script>
+<style scoped>
+.searchBar {
+  text-align: center;
+}
+.muralBox {
+  margin: auto;
+  max-width: 75%;
+}
+</style>
