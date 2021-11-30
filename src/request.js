@@ -6,12 +6,7 @@ const parsing = (res) => {
     const topAlbumData=[];
     const topAlbums = res.data.topalbums.album;
     for (let {name, image, playcount} of topAlbums){
-        let albumImage = '';
-        for (let typeOfImg of image){
-            if (typeOfImg.size === 'large'){
-                albumImage = typeOfImg['#text'];
-            }
-        }
+        const albumImage = image.find(img => img.size === 'large')['#text'];
         if (albumImage && count < 51){
             topAlbumData.push ({img: albumImage, name, playcount});
             count++;
