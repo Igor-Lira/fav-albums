@@ -4,11 +4,13 @@
       <label for="username">Your Username</label> 
       <input id="username" v-model="userName" @keydown.enter="searchInApi" type="text" />
     </div>
-    <div>
-      <button @click="downloadMural"> Download </button>
+    <div class="btn-download">
+      <button v-show="showDownloadButton.value" @click="downloadMural"> Download </button>
     </div>
-    <div class="muralBox" ref="muralPic">
-        <Mural :topAlbumData="topAlbumData"/>
+    <div class="muralBox"  ref="muralPic">
+      <div class="wrapper">
+         <Mural :topAlbumData="topAlbumData" @showDownloadButton="showDownloadButton.value=true"/>
+      </div>
     </div>
   </div>
 </template>
@@ -26,8 +28,9 @@ export default {
   }, 
   setup(){
     const muralPic = ref ('');
-    const userName = ref ('srrlism');
+    const userName = ref ('igorlirap');
     const topAlbumData = reactive({value: []});
+    const showDownloadButton = reactive({value: false})
     const searchInApi = () => {
       getUserTopAlbums(userName.value).then (res =>  topAlbumData.value = res);
     }
@@ -44,7 +47,8 @@ export default {
       muralPic,
       userName,
       topAlbumData,
-      downloadMural
+      downloadMural,
+      showDownloadButton,
     }
   }
 }
@@ -56,5 +60,17 @@ export default {
 .muralBox {
   margin: auto;
   max-width: 600px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.wrapper {
+  background: #1F1C2C;
+  display: flex;  
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  flex-basis: 100%;
+}
+.btn-download {
+  text-align: center;
 }
 </style>

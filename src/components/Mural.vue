@@ -1,7 +1,7 @@
 <template>
-  <span v-for="(topAlbum, i) in topAlbumInfo.value" :key="topAlbum.name"> 
+  <div v-for="(topAlbum, i) in topAlbumInfo.value" :key="topAlbum.name" class="albums"> 
     <Album :info="topAlbum" :width="layoutConfig[i].width"/>
-  </span>
+  </div>
 </template>
 
 <script>
@@ -16,16 +16,26 @@ export default {
       type: Object, 
       required: false, 
       default: ()=> {}
-    }
+    },
   },
-  setup(props){
+  setup(props, {emit}){
     const topAlbumInfo = reactive({value: []});
     const layoutConfig = layout;
-    watchEffect(() => topAlbumInfo.value = props.topAlbumData.value );
+    watchEffect(() => {
+      topAlbumInfo.value = props.topAlbumData.value;
+      if (topAlbumInfo.value.length == 51){
+        emit ('showDownloadButton');
+      }
+    } );
     return {
       topAlbumInfo,
-      layoutConfig
+      layoutConfig,
     }
   }
 }
 </script>
+<style scoped>
+.albums {
+  align-content: flex-start;
+}
+</style>
