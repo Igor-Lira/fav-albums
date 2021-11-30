@@ -60,15 +60,14 @@ export default {
 .muralBox {
   margin: auto;
   max-width: 600px;
+  min-width: 600px;
   display: flex;
   flex-wrap: wrap;
 }
 .wrapper {
   background: #1F1C2C;
   display: flex;  
-  justify-content: flex-start;
   flex-wrap: wrap;
-  flex-basis: 100%;
 }
 .btn-download {
   text-align: center;
