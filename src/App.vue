@@ -17,14 +17,13 @@ import getUserTopAlbums from './request.js'
 
 export default {
   name: 'App',
-  components: {
+    components: {
     Mural
   }, 
   setup(){
     const userName = ref ('srrlism');
     const topAlbumData = reactive({value: []});
     const searchInApi = () => {
-      console.log ('current search', userName.value);
       getUserTopAlbums(userName.value).then (res =>  topAlbumData.value = res);
     }
     return {
@@ -41,6 +40,6 @@ export default {
 }
 .muralBox {
   margin: auto;
-  max-width: 75%;
+  max-width: 600px;
 }
 </style>
