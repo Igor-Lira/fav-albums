@@ -18,14 +18,11 @@ export default {
       default: ()=> {}
     },
   },
-  setup(props, {emit}){
+  setup(props){
     const topAlbumInfo = reactive({value: []});
     const layoutConfig = layout;
     watchEffect(() => {
       topAlbumInfo.value = props.topAlbumData.value;
-      if (topAlbumInfo.value.length == 51){
-        emit ('showDownloadButton');
-      }
     } );
     return {
       topAlbumInfo,

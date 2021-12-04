@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <span>
-      <p>Top Album Generator for <a href="">Last.fm</a> users</p>
+      <p>Top Albums Generator for <a href="">Last.fm</a> users</p>
     </span>
     <div class="frame">
       <Search @user-search="searchInApi" />
@@ -9,16 +9,18 @@
     <div class="errorMessage">
       <span> {{ errorMessage }} </span>
     </div>
-    <span v-if="showDownloadButton.value" class="mural-text"> Your top albums in 2021 </span>
-    <div class="muralBox" ref="muralPic" v-if="showMural">
-      <div class="wrapper">
-        <Mural
-          :topAlbumData="topAlbumData"
-          @showDownloadButton="showDownloadButton.value = true"
-        />
+    <div v-if="showMural">
+      <span class="mural-text"> Your top albums in 2021 </span>
+      <div class="muralBox" ref="muralPic">
+        <div class="wrapper">
+          <Mural
+            :topAlbumData="topAlbumData"
+            @showDownloadButton="showDownloadButton.value = true"
+          />
+        </div>
       </div>
+      <Download @download="downloadMural" />
     </div>
-    <Download v-if="showDownloadButton.value" @download="downloadMural" />
   </div>
 </template>
 
@@ -41,7 +43,6 @@ export default {
     const muralPic = ref("");
     const errorMessage = ref("");
     const topAlbumData = reactive({ value: [] });
-    const showDownloadButton = reactive({ value: false });
     const searchInApi = (userName) => {
       getUserTopAlbums(userName)
         .then((res) => {
@@ -51,7 +52,6 @@ export default {
         })
         .catch(() => {
           errorMessage.value = "Profile not found";
-          showDownloadButton.value = false;
         });
     };
     function downloadMural() {
@@ -62,7 +62,7 @@ export default {
           link.href = canvas.toDataURL();
           link.click();
         })
-        .catch((err) => console.log("erro no download", err.message));
+        .catch((err) => console.log("Download error", err.message));
     }
     const showMural = computed(() => {
       return !errorMessage.value && topAlbumData.value.length;
@@ -73,7 +73,6 @@ export default {
       topAlbumData,
       showMural,
       downloadMural,
-      showDownloadButton,
       errorMessage,
     };
   },

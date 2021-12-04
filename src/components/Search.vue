@@ -1,7 +1,7 @@
 <template>
   <form @submit.prevent="handleSearch">
     <label for="search">Search</label>
-    <input
+    <input autofocus
       id="search"
       @focus="onFocus"
       @blur="onBlur"

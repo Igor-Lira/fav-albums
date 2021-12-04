@@ -1,7 +1,7 @@
 <template>
 <div class="container">
     <img :src="img" :width="coverWidth" :height="coverWidth" alt="" class="myimg"/>
-    <div v-if="tag" class="top-left">www.favalbums.space</div>
+    <div v-if="tag" class="top-left">@favalbums.space</div>
 </div>
 </template>
 
