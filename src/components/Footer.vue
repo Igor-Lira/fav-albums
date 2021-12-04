@@ -23,5 +23,6 @@ export default {};
   background-color: #000020;
   color: white;
   text-align: center;
+  z-index: 3;
 }
 </style>

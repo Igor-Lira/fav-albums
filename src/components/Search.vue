@@ -1,9 +1,9 @@
 <template>
-<div class="frame">
+<div>
   <form @submit.prevent="handleSearch">
     <label for="search">Search</label>
     <input autofocus
-      id="search"
+      id="search-input"
       ref="inputRef"
       @mouseover="mouseOver"
       @focus="onFocus"
@@ -59,6 +59,7 @@ export default {
   margin: 0;
   padding: 0;
 }
+
 :root {
   --bg: #e3e4e8;
   --fg: #17181c;
@@ -67,6 +68,7 @@ export default {
   --dur: 1s;
   font-size: calc(16px + (24 - 16) * (100vw - 320px) / (1280 - 320));
 }
+
 body,
 input {
   color: var(--fg);

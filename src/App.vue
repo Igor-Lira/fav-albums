@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Header />
-    <Search @user-search="searchInApi" />
+    <Search @user-search="searchInApi" :class="!showMural ? 'frame' : ''"/>
     <div class="errorMessage">
       <span> {{ errorMessage }} </span>
     </div>
@@ -113,5 +113,12 @@ export default {
 .mural-text {
   text-align: center;
   font-size: 15px;
+}
+.frame {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 40vh;
 }
 </style>

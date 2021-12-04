@@ -11,7 +11,7 @@
 export default {};
 </script>
 
-<style>
+<style scoped>
 .Header {
   text-align: center;
 }

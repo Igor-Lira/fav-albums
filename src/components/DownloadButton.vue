@@ -1,5 +1,5 @@
 <template>
-  <div class="frame">
+  <div class="dowload-btn-container">
     <button class="custom-btn btn" @click="handleClick">Download</button>
   </div>
 </template>
@@ -18,7 +18,7 @@ export default {
 </script>
 
 <style scoped>
-.frame {
+.dowload-btn-container {
   width: 90%;
   margin: 15px auto;
   text-align: center;
