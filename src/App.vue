@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <span>
-      <p>Top Albums Generator for <a href="">Last.fm</a> users</p>
+      <p>Top Albums Generator for <a href="https://www.last.fm/user/IgorLirap">Last.fm</a> users</p>
     </span>
     <div class="frame">
       <Search @user-search="searchInApi" />
@@ -21,6 +21,11 @@
       </div>
       <Download @download="downloadMural" />
     </div>
+  </div>
+  <div class="footer">
+    <a href="https://www.linkedin.com/in/igor-lira-passos-5b4aa5192/"><i class="fa fa-linkedin-square" style="font-size: 24px"></i></a>
+    &nbsp;
+    <a href="https://github.com/Igor-Lira/fav-albums"><i class="fa fa-github" aria-hidden="true"></i></a>
   </div>
 </template>
 
@@ -102,5 +107,14 @@ export default {
 }
 .mural-text {
   font-size: 15px;
+}
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #000020;
+  color: white;
+  text-align: center;
 }
 </style>
