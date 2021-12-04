@@ -1,6 +1,6 @@
 <template>
   <div v-for="(topAlbum, i) in topAlbumInfo.value" :key="topAlbum.name"> 
-    <Album :info="topAlbum" :width="layoutConfig[i].width"/>
+    <Album :info="topAlbum" :width="layoutConfig[i].width" :tag="i == 2"/>
   </div>
 </template>
 

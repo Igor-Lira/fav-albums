@@ -81,7 +81,6 @@ form {
 input,
 .caret {
   display: block;
-  transition: all calc(var(--dur) * 0.5) linear;
 }
 input {
   background: transparent;

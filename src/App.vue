@@ -9,7 +9,6 @@
     <div class="errorMessage">
       <span> {{ errorMessage }} </span>
     </div>
-    <Download v-if="showDownloadButton.value" @download="downloadMural" />
     <span v-if="showDownloadButton.value" class="mural-text"> These were your top albums in 2021 </span>
     <div class="muralBox" ref="muralPic" v-if="showMural">
       <div class="wrapper">
@@ -19,6 +18,7 @@
         />
       </div>
     </div>
+    <Download v-if="showDownloadButton.value" @download="downloadMural" />
   </div>
 </template>
 
@@ -47,6 +47,7 @@ export default {
         .then((res) => {
           topAlbumData.value = res;
           errorMessage.value = "";
+          document.activeElement.blur();
         })
         .catch(() => {
           errorMessage.value = "Profile not found";
