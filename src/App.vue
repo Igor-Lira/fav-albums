@@ -9,7 +9,7 @@
     <div class="errorMessage">
       <span> {{ errorMessage }} </span>
     </div>
-    <span v-if="showDownloadButton.value" class="mural-text"> These were your top albums in 2021 </span>
+    <span v-if="showDownloadButton.value" class="mural-text"> Your top albums in 2021 </span>
     <div class="muralBox" ref="muralPic" v-if="showMural">
       <div class="wrapper">
         <Mural
