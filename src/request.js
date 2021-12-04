@@ -17,6 +17,6 @@ const parsing = (res) => {
 export default async (userName) => {
     dotenv.config();
     const APIKEY = process.env.VUE_APP_APIKEY;
-    const baseUrl = `http://ws.audioscrobbler.com/2.0/?method=user.gettopalbums&user=${userName}&api_key=${APIKEY}&format=json`
+    const baseUrl = `https://ws.audioscrobbler.com/2.0/?method=user.gettopalbums&user=${userName}&api_key=${APIKEY}&format=json`
     return axios.get(baseUrl, {params: {period: '12month', limit: 60 }}).then (parsing);
 }

@@ -4,10 +4,13 @@
   "private": true,
   "author": "",
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "serve:dev": "vue-cli-service serve",
+    "build:dev": "vue-cli-service build",
+    "lint:dev": "vue-cli-service lint",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "serve": "export NODE_OPTIONS=--openssl-legacy-provider && vue-cli-service serve",
+    "build": "export NODE_OPTIONS=--openssl-legacy-provider && vue-cli-service build",
+    "lint": "export NODE_OPTIONS=--openssl-legacy-provider && vue-cli-service lint"
   },
   "main": "index.js",
   "dependencies": {
