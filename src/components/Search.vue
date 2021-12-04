@@ -5,7 +5,7 @@
       id="search"
       type="search"
       pattern=".*\S.*"
-      v-model="userSearch"
+      v-model="currentSearch"
       required
     />
     <span class="caret"></span>
@@ -13,15 +13,17 @@
 </template>
 
 <script>
-import { ref } from 'vue'
+import { ref } from "@vue/reactivity";
+
 export default {
   setup(props, { emit }) {
-    const userSearch = ref('');
+    const currentSearch = ref("");
+
     function handleSearch() {
-      emit("user-search", userSearch.value);
+      emit("user-search", currentSearch.value);
     }
     return {
-      userSearch,
+      currentSearch,
       handleSearch,
     };
   },
