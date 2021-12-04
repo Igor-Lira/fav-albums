@@ -3,6 +3,9 @@
     <label for="search">Search</label>
     <input
       id="search"
+      @focus="onFocus"
+      @blur="onBlur"
+      :placeholder="placeholder"
       type="search"
       pattern=".*\S.*"
       v-model="currentSearch"
@@ -18,13 +21,25 @@ import { ref } from "@vue/reactivity";
 export default {
   setup(props, { emit }) {
     const currentSearch = ref("");
-
+    const placeholder = ref("");
     function handleSearch() {
       emit("user-search", currentSearch.value);
     }
+    function onFocus() {
+      setTimeout(() => {
+        placeholder.value = "Your nickname";
+      }, 500);
+    }
+    function onBlur() {
+      currentSearch.value = "";
+      placeholder.value = "";
+    }
     return {
       currentSearch,
+      placeholder,
       handleSearch,
+      onFocus,
+      onBlur,
     };
   },
 };

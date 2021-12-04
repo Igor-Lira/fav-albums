@@ -1,4 +1,4 @@
-const totalWidth = 600;
+const totalWidth = 400;
 
 
 const config = [{

@@ -1,9 +1,14 @@
 <template>
   <div>
     <span>
+      <p>
+        Top Album Generator for <a href="www.last.fm">Last.fm</a> users
+      </p> 
+    </span>
+    <div class="frame">
       <Search @user-search="searchInApi" />
       <Download v-show="showDownloadButton.value" @download="downloadMural" />
-    </span>
+    </div>
     <div class="errorMessage">
       <span> {{ errorMessage }} </span>
     </div>
@@ -72,10 +77,13 @@ export default {
 };
 </script>
 <style scoped>
+* {
+  text-align: center;
+}
 .muralBox {
   margin: auto;
-  max-width: 600px;
-  min-width: 600px;
+  max-width: 400px;
+  min-width: 400px;
   display: flex;
   flex-wrap: wrap;
 }
