@@ -86,13 +86,13 @@ export default {
 .muralBox {
   margin: auto;
   max-width: 400px;
+  min-width: 400px;
 }
 .wrapper {
   background: #1f1c2c;
   display: flex;
   flex-wrap: wrap;
 }
-
 .download-btn {
   text-align: center;
 }
