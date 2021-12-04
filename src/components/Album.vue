@@ -40,5 +40,4 @@ export default {
 .myimg {
   vertical-align: bottom;
 }
-
 </style>

@@ -9,9 +9,9 @@
     <div class="errorMessage">
       <span> {{ errorMessage }} </span>
     </div>
+    <Download v-if="showDownloadButton.value" @download="downloadMural" />
+    <span v-if="showDownloadButton.value" class="mural-text"> These were your top albums in 2021 </span>
     <div class="muralBox" ref="muralPic" v-if="showMural">
-      <Download v-show="showDownloadButton.value" @download="downloadMural" />
-      <span class="mural-text"> These were your top albums in 2021 </span>
       <div class="wrapper">
         <Mural
           :topAlbumData="topAlbumData"
@@ -82,11 +82,10 @@ export default {
 * {
   text-align: center;
 }
+
 .muralBox {
-  vertical-align: bottom;
   margin: auto;
   max-width: 400px;
-  min-width: 400px;
 }
 .wrapper {
   background: #1f1c2c;

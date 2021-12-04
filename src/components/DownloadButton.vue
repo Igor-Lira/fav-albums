@@ -17,7 +17,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .frame {
   width: 90%;
   margin: 15px auto;
