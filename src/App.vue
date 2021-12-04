@@ -1,18 +1,17 @@
 <template>
-  <div>
+  <div id="app">
     <span>
-      <p>
-        Top Album Generator for <a href="www.last.fm">Last.fm</a> users (2021)
-      </p> 
+      <p>Top Album Generator for <a href="">Last.fm</a> users</p>
     </span>
     <div class="frame">
       <Search @user-search="searchInApi" />
-      <Download v-show="showDownloadButton.value" @download="downloadMural" />
     </div>
     <div class="errorMessage">
       <span> {{ errorMessage }} </span>
     </div>
-    <div class="muralBox" ref="muralPic" v-if="!errorMessage">
+    <div class="muralBox" ref="muralPic" v-if="showMural">
+      <Download v-show="showDownloadButton.value" @download="downloadMural" />
+      <span class="mural-text"> These were your top albums in 2021 </span>
       <div class="wrapper">
         <Mural
           :topAlbumData="topAlbumData"
@@ -24,7 +23,7 @@
 </template>
 
 <script>
-import { reactive, ref } from "@vue/reactivity";
+import { computed, reactive, ref } from "@vue/reactivity";
 import Mural from "./components/Mural.vue";
 import Search from "./components/Search.vue";
 import Download from "./components/DownloadButton.vue";
@@ -44,7 +43,6 @@ export default {
     const topAlbumData = reactive({ value: [] });
     const showDownloadButton = reactive({ value: false });
     const searchInApi = (userName) => {
-
       getUserTopAlbums(userName)
         .then((res) => {
           topAlbumData.value = res;
@@ -65,10 +63,14 @@ export default {
         })
         .catch((err) => console.log("erro no download", err.message));
     }
+    const showMural = computed(() => {
+      return !errorMessage.value && topAlbumData.value.length;
+    });
     return {
       searchInApi,
       muralPic,
       topAlbumData,
+      showMural,
       downloadMural,
       showDownloadButton,
       errorMessage,
@@ -98,5 +100,8 @@ export default {
 .errorMessage {
   margin: auto;
   text-align: center;
+}
+.mural-text {
+  font-size: 15px;
 }
 </style>
