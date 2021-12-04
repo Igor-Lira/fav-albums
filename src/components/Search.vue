@@ -1,4 +1,5 @@
 <template>
+<div class="frame">
   <form @submit.prevent="handleSearch">
     <label for="search">Search</label>
     <input autofocus
@@ -13,6 +14,7 @@
     />
     <span class="caret"></span>
   </form>
+</div>
 </template>
 
 <script>
@@ -94,6 +96,7 @@ input {
   appearance: none;
 }
 input:focus,
+input:hover,
 input:valid {
   background: var(--input);
   border-radius: 0.25em;
@@ -104,12 +107,14 @@ input:valid {
   width: 100%;
   height: 3em;
 }
-input:focus {
+input:focus,
+input:hover {
   animation: showCaret var(--dur) steps(1);
   outline: transparent;
 }
 input:focus + .caret,
-input:valid + .caret {
+input:valid + .caret,
+input:hover + .caret {
   animation: handleToCaret var(--dur) linear;
   background: transparent;
   width: 1px;

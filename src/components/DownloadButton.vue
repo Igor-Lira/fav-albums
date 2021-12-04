@@ -1,6 +1,6 @@
 <template>
   <div class="frame">
-    <button class="custom-btn btn-15" @click="handleClick">Download</button>
+    <button class="custom-btn btn" @click="handleClick">Download</button>
   </div>
 </template>
 
@@ -41,13 +41,12 @@ button {
   display: inline-block;
 }
 
-/* 15 */
-.btn-15 {
+.btn {
   background: #000;
   color: #fff;
   z-index: 1;
 }
-.btn-15:after {
+.btn:after {
   position: absolute;
   content: "";
   width: 0;
