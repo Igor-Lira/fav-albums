@@ -27,7 +27,7 @@ export default {
     }
     function onFocus() {
       setTimeout(() => {
-        placeholder.value = "Your nickname";
+        placeholder.value = "Your username";
       }, 500);
     }
     function onBlur() {

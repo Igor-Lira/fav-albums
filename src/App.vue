@@ -2,7 +2,7 @@
   <div>
     <span>
       <p>
-        Top Album Generator for <a href="www.last.fm">Last.fm</a> users
+        Top Album Generator for <a href="www.last.fm">Last.fm</a> users (2021)
       </p> 
     </span>
     <div class="frame">
@@ -76,22 +76,22 @@ export default {
   },
 };
 </script>
-<style scoped>
+<style>
 * {
   text-align: center;
 }
 .muralBox {
+  vertical-align: bottom;
   margin: auto;
   max-width: 400px;
   min-width: 400px;
-  display: flex;
-  flex-wrap: wrap;
 }
 .wrapper {
   background: #1f1c2c;
   display: flex;
   flex-wrap: wrap;
 }
+
 .download-btn {
   text-align: center;
 }

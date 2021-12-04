@@ -1,5 +1,5 @@
 <template>
-  <div v-for="(topAlbum, i) in topAlbumInfo.value" :key="topAlbum.name" class="albums"> 
+  <div v-for="(topAlbum, i) in topAlbumInfo.value" :key="topAlbum.name"> 
     <Album :info="topAlbum" :width="layoutConfig[i].width"/>
   </div>
 </template>

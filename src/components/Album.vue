@@ -1,5 +1,5 @@
 <template>
-      <img :src="img" :width="coverWidth" :height="coverWidth" alt=""/>
+    <img :src="img" :width="coverWidth" :height="coverWidth" alt="" class="myimg"/>
 </template>
 
 <script>
@@ -36,3 +36,9 @@ export default {
     } 
 }
 </script>
+<style>
+.myimg {
+  vertical-align: bottom;
+}
+
+</style>
