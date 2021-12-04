@@ -1,62 +1,68 @@
 <template>
   <div>
-    <div class="searchBar">
-      <label for="username">Your Username</label> 
-      <input id="username" v-model="userName" @keydown.enter="searchInApi" type="text" />
+    <Search @user-search="searchInApi" />
+    <div class="errorMessage">
+      <span> {{errorMessage}} </span>
     </div>
-    <div class="btn-download">
-      <button v-show="showDownloadButton.value" @click="downloadMural"> Download </button>
+    <div class="download-btn" v-show="showDownloadButton.value">
+      <button @click="downloadMural">Download</button>
     </div>
-    <div class="muralBox"  ref="muralPic">
+    <div class="muralBox" ref="muralPic">
       <div class="wrapper">
-         <Mural :topAlbumData="topAlbumData" @showDownloadButton="showDownloadButton.value=true"/>
+        <Mural
+          :topAlbumData="topAlbumData"
+          @showDownloadButton="showDownloadButton.value = true"
+        />
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import { reactive, ref } from '@vue/reactivity'
-import Mural from './components/Mural.vue'
-import getUserTopAlbums from './request.js'
-import html2canvas from 'html2canvas'
+import { reactive, ref } from "@vue/reactivity";
+import Mural from "./components/Mural.vue";
+import Search from "./components/Search.vue";
+import getUserTopAlbums from "./request.js";
+import html2canvas from "html2canvas";
 
 export default {
-  name: 'App',
-    components: {
-    Mural
-  }, 
-  setup(){
-    const muralPic = ref ('');
-    const userName = ref ('igorlirap');
-    const topAlbumData = reactive({value: []});
-    const showDownloadButton = reactive({value: false})
-    const searchInApi = () => {
-      getUserTopAlbums(userName.value).then (res =>  topAlbumData.value = res);
-    }
+  name: "App",
+  components: {
+    Mural,
+    Search,
+  },
+  setup() {
+    const muralPic = ref("");
+    const errorMessage = ref("");
+    const topAlbumData = reactive({ value: [] });
+    const showDownloadButton = reactive({ value: false });
+    const searchInApi = (userName) => {
+      getUserTopAlbums(userName)
+        .then(res => {topAlbumData.value = res; errorMessage.value = ''})
+        .catch(() => errorMessage.value = 'Profile not found')
+    };
     function downloadMural() {
-      var link = document.createElement('a');
-      link.download = 'favalbums.png';
-       html2canvas (muralPic.value, {allowTaint: false, useCORS: true }).then((canvas) => {
+      var link = document.createElement("a");
+      link.download = "favalbums.png";
+      html2canvas(muralPic.value, { allowTaint: false, useCORS: true }).then(
+        (canvas) => {
           link.href = canvas.toDataURL();
           link.click();
-        });
+        }
+      ).catch(err => console.log ('erro no download', err.message));
     }
     return {
       searchInApi,
       muralPic,
-      userName,
       topAlbumData,
       downloadMural,
       showDownloadButton,
-    }
-  }
-}
+      errorMessage,
+    };
+  },
+};
 </script>
 <style scoped>
-.searchBar {
-  text-align: center;
-}
 .muralBox {
   margin: auto;
   max-width: 600px;
@@ -65,11 +71,15 @@ export default {
   flex-wrap: wrap;
 }
 .wrapper {
-  background: #1F1C2C;
-  display: flex;  
+  background: #1f1c2c;
+  display: flex;
   flex-wrap: wrap;
 }
-.btn-download {
+.download-btn {
+  text-align: center;
+}
+.errorMessage {
+  margin: auto;
   text-align: center;
 }
 </style>
