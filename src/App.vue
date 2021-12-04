@@ -51,6 +51,7 @@ export default {
           console.log (topAlbumData.value);
           if (!topAlbumData || topAlbumData.value.length < 51){
             errorMessage.value = "No enough scrobles this year :("
+            clearState();
           } else {
             errorMessage.value = "";
             document.activeElement.blur();
@@ -58,6 +59,7 @@ export default {
         })
         .catch(() => {
           errorMessage.value = "User not found";
+          clearState();
         });
     };
     function downloadMural() {
@@ -73,7 +75,12 @@ export default {
     const showMural = computed(() => {
       return !errorMessage.value && topAlbumData.value.length;
     });
-
+    function clearState(){
+      setTimeout(()=> {
+        topAlbumData.value = {};
+        errorMessage.value = "";
+      }, 2000)
+    }
     return {
       searchInApi,
       muralRef,

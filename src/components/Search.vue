@@ -4,6 +4,8 @@
     <label for="search">Search</label>
     <input autofocus
       id="search"
+      ref="inputRef"
+      @mouseover="mouseOver"
       @focus="onFocus"
       @blur="onBlur"
       :placeholder="placeholder"
@@ -27,6 +29,8 @@ export default {
     function handleSearch() {
       emit("user-search", currentSearch.value);
     }
+    function mouseOver(){
+    }
     function onFocus() {
       setTimeout(() => {
         placeholder.value = "Your username";
@@ -42,6 +46,7 @@ export default {
       handleSearch,
       onFocus,
       onBlur,
+      mouseOver,
     };
   },
 };
